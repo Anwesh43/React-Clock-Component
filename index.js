@@ -1,4 +1,13 @@
 import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
+import Overlay from './components/Overlay'
 import Clock from './components/Clock'
-ReactDOM.render(<Clock/>,document.getElementById('comp'))
+export class TotalComponent extends Component {
+    render() {
+        return (<div>
+                    <Overlay/>
+                    <Clock/>
+               </div>)
+    }
+}
+ReactDOM.render(<TotalComponent/>,document.getElementById('comp'))
