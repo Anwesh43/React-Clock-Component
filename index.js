@@ -17,16 +17,19 @@ class Clock extends Component {
         const mStr = this.addZeroIfReq(m)
         const s = date.getSeconds()
         const sStr = this.addZeroIfReq(s)
-        return {hStr,mStr,sStr,period}
+        const blinkStr = ":"
+        return {hStr,mStr,sStr,period,blinkStr}
     }
     componentDidMount() {
-
+        setInterval(()=>{
+            this.setState(this.setTime())
+        },1000)
     }
     render() {
         const w = window.innerWidth,h = window.innerHeight
-        const styleObj = {fontSize:`${h/5}px`,position:'absolute',color:'white',left:`${w/2-w/6-h/6}px`,top:`${h/2-h/6}px`,width:`${w/3}px`,height:`${h/10}px`}
+        const styleObj = {fontSize:`${h/7}px`,position:'absolute',color:'white',left:`${w/2-w/6-h/4}px`,top:`${h/2-h/6}px`,width:`${w/2}px`,height:`${h/10}px`}
         return (<div style={styleObj}>
-                  {this.state.hStr+":"+this.state.mStr+":"+this.state.sStr+":"+this.state.period}
+                  {this.state.hStr+this.state.blinkStr+this.state.mStr+this.state.blinkStr+this.state.sStr+this.state.blinkStr+this.state.period}
               </div>)
     }
 }
